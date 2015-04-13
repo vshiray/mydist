@@ -11,10 +11,10 @@
         "accept_license_agreement": "true",
         "accept_oracle_download_terms": "true"
       }
-    },
+    }
   },
   "run_list": [
     "recipe[mongodb]",
-    "recipe[java]",
+    "recipe[java]"
   ]
 }
