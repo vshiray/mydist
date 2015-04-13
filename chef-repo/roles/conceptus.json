@@ -1,0 +1,20 @@
+{
+  "name": "conceptus",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The base role for the Conceptus application",
+  "default_attributes": {
+    "java": {
+      "install_flavor": "oracle",
+      "jdk_version": "8",
+      "oracle": {
+        "accept_license_agreement": "true",
+        "accept_oracle_download_terms": "true"
+      }
+    },
+  },
+  "run_list": [
+    "recipe[mongodb]",
+    "recipe[java]",
+  ]
+}
