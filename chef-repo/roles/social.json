@@ -1,0 +1,28 @@
+{
+  "name": "social",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The base role for the Social application",
+  "default_attributes": {
+    "java": {
+      "install_flavor": "oracle",
+      "jdk_version": "8",
+      "oracle": {
+        "accept_license_agreement": "true",
+        "accept_oracle_download_terms": "true"
+      }
+    },
+    "mozilla-firefox": {
+      "version": "34.0"
+    },
+    "xvfb": {
+      "dimensions": "1366x768x24"
+    }
+  },
+  "run_list": [
+    "recipe[java]",
+    "recipe[mongodb]",
+    "recipe[mozilla-firefox]",
+    "recipe[xvfb]"
+  ]
+}
