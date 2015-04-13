@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'https://supermarket.getchef.com/api/v1'
+
+cookbook 'java'
+cookbook 'mongodb'
+cookbook 'mozilla-firefox'
+cookbook 'postgresql'
+cookbook 'xvfb'
