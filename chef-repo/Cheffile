@@ -3,6 +3,7 @@
 
 site 'https://supermarket.getchef.com/api/v1'
 
+cookbook 'chrome'
 cookbook 'java'
 cookbook 'mongodb'
 cookbook 'mozilla-firefox'
