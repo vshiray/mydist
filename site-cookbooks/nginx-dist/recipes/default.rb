@@ -17,3 +17,7 @@ apt_repository 'nginx' do
 end
 
 package 'nginx'
+
+service 'nginx' do
+    action [:enable, :start]
+end

@@ -20,9 +20,9 @@
     }
   },
   "run_list": [
-    "recipe[java]",
     "recipe[mongodb]",
-    "recipe[mozilla-firefox]",
+    "recipe[java]",
+    "recipe[chrome]",
     "recipe[xvfb]"
   ]
 }
