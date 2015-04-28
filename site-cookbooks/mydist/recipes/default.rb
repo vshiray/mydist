@@ -16,6 +16,14 @@ node['network']['interfaces'].each_value do |i|
 end
 
 if myips.include?(node['mydist']['postgresql']['host'])
+    pg_hba = []
+    pg_hba.push({"type" => "local", "db" => "postgres", "user" => "postgres", "addr" => "", "method" => "peer"})
+    pg_hba.push({"type" => "local", "db" => "all", "user" => "all", "addr" => "", "method" => "md5"})
+    pg_hba.push({"type" => "host",  "db" => "all", "user" => "all", "addr" => "0.0.0.0/0", "method" => "md5"})
+
+    node.default['postgresql']['version'] = '9.4'
+    node.default['postgresql']['listen_addresses'] = '0.0.0.0'
+    node.default['postgresql']['pg_hba'] = pg_hba
     include_recipe 'postgresql::server'
 else
     service "postgresql" do
