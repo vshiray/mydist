@@ -38,3 +38,12 @@ else
         action [:stop, :disable]
     end
 end
+
+if myips.include?(node['mydist']['social']['host']) || myips.include?(node['mydist']['conceptus']['host'])
+    #include_recipe 'java'
+end
+
+if myips.include?(node['mydist']['social']['host'])
+    include_recipe 'xvfb::package'
+    include_recipe 'chrome'
+end

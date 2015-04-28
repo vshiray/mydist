@@ -6,6 +6,9 @@ description      'Installs/Configures mydist'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
+depends          'chrome'
+depends          'java'
 depends          'mongodb'
 depends          'nginx-dist'
 depends          'postgresql'
+depends          'xvfb'
