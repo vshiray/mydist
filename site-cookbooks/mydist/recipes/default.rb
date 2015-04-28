@@ -16,7 +16,7 @@ node['network']['interfaces'].each_value do |i|
 end
 
 if myips.include?(node['mydist']['postgresql']['host'])
-    print "Setup PostgresQL\n"
+    include_recipe 'postgresql::server'
 else
     service "postgresql" do
         action [:stop, :disable]
