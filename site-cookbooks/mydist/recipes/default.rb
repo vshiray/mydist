@@ -32,7 +32,10 @@ else
 end
 
 if myips.include?(node['mydist']['nginx']['host'])
-    print "Setup Nginx and Angular files\n"
+    include_recipe "nginx-dist"
+    service "nginx" do
+        action [:start, :enable]
+    end
 else
     service "nginx" do
         action [:stop, :disable]
