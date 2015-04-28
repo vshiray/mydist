@@ -24,7 +24,7 @@ else
 end
 
 if myips.include?(node['mydist']['mongodb']['host'])
-    print "Setup MongoDB\n"
+    include_recipe 'mongodb'
 else
     service "mongodb" do
         action [:stop, :disable]
@@ -32,10 +32,7 @@ else
 end
 
 if myips.include?(node['mydist']['nginx']['host'])
-    include_recipe "nginx-dist"
-    service "nginx" do
-        action [:start, :enable]
-    end
+    include_recipe 'nginx-dist'
 else
     service "nginx" do
         action [:stop, :disable]
