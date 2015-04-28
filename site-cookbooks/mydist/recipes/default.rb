@@ -50,4 +50,14 @@ end
 if myips.include?(node['mydist']['social']['host'])
     include_recipe 'xvfb::package'
     include_recipe 'chrome'
+
+    package 'unzip'
+    remote_file "#{Chef::Config[:file_cache_path]}/chromedriver_linux64.zip" do
+        action :create_if_missing
+        source "http://chromedriver.storage.googleapis.com/2.15/chromedriver_linux64.zip"
+    end
+    execute "Install Crome Driver" do
+        command "unzip '#{Chef::Config[:file_cache_path]}/chromedriver_linux64.zip' -d /usr/local/bin; chmod 755 /usr/local/bin/chromedriver"
+        not_if { ::File.exists?("/usr/local/bin/chromedriver")}
+    end
 end
