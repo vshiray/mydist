@@ -1,11 +1,11 @@
-conceptus-app CHANGELOG
-=======================
+mydist CHANGELOG
+================
 
-This file is used to list changes made in each version of the conceptus-app cookbook.
+This file is used to list changes made in each version of the mydist cookbook.
 
 0.1.0
 -----
-- [your_name] - Initial release of conceptus-app
+- [your_name] - Initial release of mydist
 
 - - -
 Check the [Markdown Syntax Guide](http://daringfireball.net/projects/markdown/syntax) for help with Markdown.

@@ -1,5 +1,5 @@
-conceptus-app Cookbook
-======================
+mydist Cookbook
+===============
 TODO: Enter the cookbook description here.
 
 e.g.
@@ -11,14 +11,14 @@ TODO: List your cookbook requirements. Be sure to include any requirements this 
 
 e.g.
 #### packages
-- `toaster` - conceptus-app needs toaster to brown your bagel.
+- `toaster` - mydist needs toaster to brown your bagel.
 
 Attributes
 ----------
 TODO: List your cookbook attributes here.
 
 e.g.
-#### conceptus-app::default
+#### mydist::default
 <table>
   <tr>
     <th>Key</th>
@@ -27,7 +27,7 @@ e.g.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['conceptus-app']['bacon']</tt></td>
+    <td><tt>['mydist']['bacon']</tt></td>
     <td>Boolean</td>
     <td>whether to include bacon</td>
     <td><tt>true</tt></td>
@@ -36,17 +36,17 @@ e.g.
 
 Usage
 -----
-#### conceptus-app::default
+#### mydist::default
 TODO: Write usage instructions for each cookbook.
 
 e.g.
-Just include `conceptus-app` in your node's `run_list`:
+Just include `mydist` in your node's `run_list`:
 
 ```json
 {
   "name":"my_node",
   "run_list": [
-    "recipe[conceptus-app]"
+    "recipe[mydist]"
   ]
 }
 ```
