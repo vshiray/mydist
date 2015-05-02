@@ -57,15 +57,24 @@ end
 
 if myips.include?(node['mydist']['social']['host'])
     include_recipe 'xvfb::package'
-    include_recipe 'chrome'
+
+    package 'libnss3'
+    remote_file "#{Chef::Config[:file_cache_path]}/google-chrome-stable_39.0.2171.99-1_amd64.deb" do
+        action :create_if_missing
+        source "http://mirror.pcbeta.com/google/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_39.0.2171.99-1_amd64.deb"
+    end
+    execute "Install Google Crome" do
+        command "dpkg -i '#{Chef::Config[:file_cache_path]}/google-chrome-stable_39.0.2171.99-1_amd64.deb'"
+        not_if { ::File.exists?("/usr/bin/google-chrome")}
+    end
 
     package 'unzip'
-    remote_file "#{Chef::Config[:file_cache_path]}/chromedriver_linux64.zip" do
+    remote_file "#{Chef::Config[:file_cache_path]}/chromedriver_linux64_v214.zip" do
         action :create_if_missing
-        source "http://chromedriver.storage.googleapis.com/2.15/chromedriver_linux64.zip"
+        source "http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip"
     end
     execute "Install Crome Driver" do
-        command "unzip '#{Chef::Config[:file_cache_path]}/chromedriver_linux64.zip' -d /usr/local/bin; chmod 755 /usr/local/bin/chromedriver"
-        not_if { ::File.exists?("/usr/local/bin/chromedriver")}
+        command "unzip '#{Chef::Config[:file_cache_path]}/chromedriver_linux64_v214.zip' -d /usr/local/bin; chmod 755 /usr/local/bin/chromedriver; mv -f /usr/local/bin/chromedriver /usr/local/bin/chromedriver-2.14"
+        not_if { ::File.exists?("/usr/local/bin/chromedriver-2.14")}
     end
 end
