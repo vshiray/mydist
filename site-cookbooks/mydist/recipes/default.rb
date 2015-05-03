@@ -58,6 +58,7 @@ end
 if myips.include?(node['mydist']['social']['host'])
     include_recipe 'xvfb::package'
 
+    package 'google-chrome-stable'
     package 'libnss3'
     remote_file "#{Chef::Config[:file_cache_path]}/google-chrome-stable_39.0.2171.99-1_amd64.deb" do
         action :create_if_missing
@@ -76,5 +77,19 @@ if myips.include?(node['mydist']['social']['host'])
     execute "Install Crome Driver" do
         command "unzip '#{Chef::Config[:file_cache_path]}/chromedriver_linux64_v214.zip' -d /usr/local/bin; chmod 755 /usr/local/bin/chromedriver; mv -f /usr/local/bin/chromedriver /usr/local/bin/chromedriver-2.14"
         not_if { ::File.exists?("/usr/local/bin/chromedriver-2.14")}
+    end
+
+    include_recipe 'social-component'
+else
+    service 'social-component' do
+        action [:stop, :disable]
+    end
+end
+
+if myips.include?(node['mydist']['conceptus']['host'])
+    include_recipe 'conceptus'
+else
+    service 'conceptus' do
+        action [:stop, :disable]
     end
 end
