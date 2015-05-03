@@ -34,7 +34,3 @@ template '/etc/init/conceptus.conf' do
     })
     action :create
 end
-
-service 'conceptus' do
-    action [:start, :enable]
-end

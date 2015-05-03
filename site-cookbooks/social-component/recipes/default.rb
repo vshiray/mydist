@@ -34,7 +34,3 @@ template '/etc/init/social-component.conf' do
     })
     action :create
 end
-
-service 'social-component' do
-    action [:start, :enable]
-end

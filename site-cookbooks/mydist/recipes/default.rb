@@ -80,6 +80,9 @@ if myips.include?(node['mydist']['social']['host'])
     end
 
     include_recipe 'social-component'
+    service 'social-component' do
+        action [:start, :enable]
+    end
 else
     service 'social-component' do
         action [:stop, :disable]
@@ -88,6 +91,9 @@ end
 
 if myips.include?(node['mydist']['conceptus']['host'])
     include_recipe 'conceptus'
+    service 'conceptus' do
+        action [:start, :enable]
+    end
 else
     service 'conceptus' do
         action [:stop, :disable]
