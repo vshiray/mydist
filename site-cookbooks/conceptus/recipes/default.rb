@@ -28,6 +28,15 @@ directory '/opt/mydist/apps/conceptus/log' do
     action :create
 end
 
+template '/opt/mydist/apps/conceptus/conceptus.sh' do
+    variables({
+        :appdir => '/opt/mydist/apps/conceptus'
+    })
+    mode '0755'
+    action :create
+end
+
+
 template '/etc/init/conceptus.conf' do
     variables({
         :appdir => '/opt/mydist/apps/conceptus'

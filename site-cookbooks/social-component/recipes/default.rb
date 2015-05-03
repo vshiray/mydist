@@ -28,6 +28,14 @@ directory '/opt/mydist/apps/social-component/log' do
     action :create
 end
 
+template '/opt/mydist/apps/social-component/social-component.sh' do
+    variables({
+        :appdir => '/opt/mydist/apps/social-component'
+    })
+    mode '0755'
+    action :create
+end
+
 template '/etc/init/social-component.conf' do
     variables({
         :appdir => '/opt/mydist/apps/social-component'

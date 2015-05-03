@@ -1,0 +1,5 @@
+#!/bin/sh
+
+APPHOME="<%= @appdir %>"
+
+exec xvfb-run --server-args="+extension RANDR" java -Djava.security.egd=file:/dev/urandom -jar "$APPHOME/social-component-0.0.1.jar" --spring.config.location="file://$APPHOME/application.properties" >>"$APPHOME/log/social-component.log" 2>&1
