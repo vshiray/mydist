@@ -14,6 +14,20 @@ user 'conceptus' do
     action :create
 end
 
+directory '/opt/mydist/apps/conceptus/run' do
+    owner 'conceptus'
+    group 'conceptus'
+    mode '0755'
+    action :create
+end
+
+directory '/opt/mydist/apps/conceptus/log' do
+    owner 'conceptus'
+    group 'conceptus'
+    mode '0755'
+    action :create
+end
+
 template '/etc/init/conceptus.conf' do
     variables({
         :appdir => '/opt/mydist/apps/conceptus'
